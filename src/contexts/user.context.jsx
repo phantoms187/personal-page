@@ -19,20 +19,17 @@ export const UserProvider = ({ children }) => {
     useEffect(() => {
 
         const unsubscribe = onAuthStateChangedListener((user) => {
-
-            if(user) {
-                createUserDocumentFromAuth(user);
-
-                const getUserDisplayName = async (user) => {
-                    const userDisplayName = await getUserDisplayName(user);
-                    setDisplayName(userDisplayName);
-                }
-                getUserDisplayName();
-                setCurrentUser(user);
-
-                console.log("displayName: ");
-                console.log(displayName);
+          if(user) {
+            createUserDocumentFromAuth(user);
+            const getDisplayNameFromDb = async (user) => {
+              const name = await getUserDisplayName(user);
+              setDisplayName(name);
             }
+            getDisplayNameFromDb(user);
+          } else {
+            setDisplayName(null);
+          }
+          setCurrentUser(user);
         });
 
         return unsubscribe;

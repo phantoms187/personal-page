@@ -66,14 +66,11 @@ export const getUserDisplayName = async (userAuth) => {
     const userSnapshot = await getDoc(userDocRef);
 
     if(userSnapshot.exists()) {
-        // const displayName = userSnapshot.get;
-        console.log("Document data:", userSnapshot.data());
         const userDisplayName = userSnapshot.data().displayName
         return userDisplayName;
     }
 
     return null;
-
 }
 
 export const getCategoriesAndDocuments = async () => {
@@ -112,7 +109,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
             console.log('error creating the user', error.message);
         }
     }
-
+ 
     return userDocRef;
 };
 

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
+
 
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
@@ -9,6 +11,7 @@ import { signInWithGooglePopup,
 } from '../../utils/firebase/firebase.utils';
 
 import './sign-in-form.styles.scss';
+
 
 const defaultFormFields = {
     email: '',
@@ -33,7 +36,7 @@ const handleSubmit = async (event) => {
 
     try {
         const  { user } = await signInAuthUserWithEmailAndPassword(email, password);
-        resetFormFields();
+        resetFormFields();    
     } catch(error) {
         switch(error.code) {
             case 'auth/wrong-password':

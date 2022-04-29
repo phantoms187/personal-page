@@ -9,20 +9,29 @@ export const NavigationConatiner = styled.div`
   margin-bottom: 25px;
 `
 export const LogoConatiner = styled(Link)`
-  height: 100%;
-  width: 70px;
-  padding: 25px;
-  .logo {
-    height: 45px;
-    width: 45px;
+  height: auto;
+  width: auto;
+  max-height: 72px;
+  max-width: 350px;  
+  img {
+    height: 50px;
+    width: 50px;
   }
+  display: flex;
+  align-items: center;
 `
+export const NameContainer = styled.span`
+font-family: 'Brush Script MT', cursive;
+font-size: 30px;
+padding 15px;
+`
+
 export const NavLinks = styled.div`
   width: 50%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: flex-end;
+  align-items: center;
 `
 export const NavLink = styled(Link)`
   padding: 10px 15px;

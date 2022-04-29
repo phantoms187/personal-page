@@ -12,22 +12,23 @@ import SnowboarderLogo from '../../assets/snowboardLogo.png'
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
-import { NavigationConatiner, LogoConatiner, NavLinks, NavLink } from './navigation.styles';
+import { NavigationConatiner, LogoConatiner, NavLinks, NavLink, NameContainer } from './navigation.styles';
 
 const Navigation = () => {
   
-    const { currentUser, displayName } = useContext(UserContext);
+    const { currentUser, displayName, setDisplayName } = useContext(UserContext);
     const { isCartOpen } = useContext(CartContext);
-
-    console.log("nav");
-    console.log(currentUser);
 
     return (
     <Fragment>
         <NavigationConatiner>
             <LogoConatiner to='/'>
-                <img src={SnowboarderLogo} className='logo'/> 
+                <img src={SnowboarderLogo} alt="snowboarder" /> 
+                <NameContainer>
+                  { displayName ? ( "Hello " + displayName + "!") : ( "" ) }
+                </NameContainer>
             </LogoConatiner> 
+            
             <NavLinks>
                 <NavLink to='/shop'>
                     ABOUT
