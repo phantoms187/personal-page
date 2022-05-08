@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from "react-router-dom";
-
+import { useNavigate } from 'react-router';
 
 import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
@@ -19,6 +18,8 @@ const defaultFormFields = {
 }
 
 const SignInForm = () => {
+let navigate = useNavigate();
+
 const[formFields, setFormFields] = useState(defaultFormFields);
 const { email, password } = formFields;
 
@@ -36,6 +37,7 @@ const handleSubmit = async (event) => {
 
     try {
         const  { user } = await signInAuthUserWithEmailAndPassword(email, password);
+        navigate("/");
         resetFormFields();    
     } catch(error) {
         switch(error.code) {

@@ -16,7 +16,7 @@ import { NavigationConatiner, LogoConatiner, NavLinks, NavLink, NameContainer } 
 
 const Navigation = () => {
   
-    const { currentUser, displayName, setDisplayName } = useContext(UserContext);
+    const { currentUser, displayName } = useContext(UserContext);
     const { isCartOpen } = useContext(CartContext);
 
     return (
@@ -30,7 +30,7 @@ const Navigation = () => {
             </LogoConatiner> 
             
             <NavLinks>
-                <NavLink to='/shop'>
+                <NavLink to='/about'>
                     ABOUT
                 </NavLink>
                 { currentUser ? (
